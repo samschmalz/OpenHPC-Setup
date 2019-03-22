@@ -7,6 +7,9 @@ then
 	exit
 fi
 
+arch=`uname -p`
+echo $arch
+
 #setting up php 7 repo and necessary utils
 sudo yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 sudo yum -y install epel-release yum-utils
