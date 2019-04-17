@@ -20,7 +20,7 @@ sudo yum-config-manager --enable remi-php73
 sudo yum -y install php php-cli
 
 #installing necessary packages
-#sudo yum install -y git centos-release-scl
+sudo yum install -y git
 #sudo yum install -y rh-python36 rh-python36-python-pip
 
 #enable python 3.6
@@ -31,5 +31,8 @@ sudo yum -y install php php-cli
 #pip install --upgrade pip
 #pip install flask
 
+if [ ! -e OpenHPC-Setup ]
+then
 git clone https://github.com/samschmalz/OpenHPC-Setup.git
+fi
 
