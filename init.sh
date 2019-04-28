@@ -36,5 +36,5 @@ then
 git clone https://github.com/samschmalz/OpenHPC-Setup.git
 fi
 
-sudo arp-scan --interface=enp0s3 10.0.2.0/24 | tail -n +3 | head -n -3 >> arp-results.txt
+sudo arp-scan --interface=enp0s3 10.0.2.0/24 | tail -n +3 | head -n -3 | awk '{print $1}' >> arp-results.txt
 
