@@ -4,6 +4,10 @@
 	{
 		$_SESSION['arch'] = `uname -p`;
 	}
+
+	if (isset($_POST)) {
+		error_log(json_encode($_POST));
+	}
 ?>
 
 <html>
@@ -11,7 +15,7 @@
 	<title>OpenHPC Setup</title>
 </head>
 <body>
-	<form method="post">
+	<form method="post" action="finish.php">
 		<label for="Architecture">CPU Architecture</label>
 		<input type="text" name="Architecture" value=<?php echo $_SESSION['arch']; ?> required><br>
 		<label for="compute-count"># of Compute Nodes</label>
@@ -28,6 +32,7 @@
 			<input type="text" name="compute-ip-4"><br>
 		</div>
 		Other stuff
+		<input type="submit" value="Submit">
 	</form>
 </body>
 </html>
