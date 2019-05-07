@@ -17,7 +17,7 @@ sudo yum -y install epel-release yum-utils
 sudo yum-config-manager --disable remi-php54
 sudo yum-config-manager --enable remi-php73
 
-sudo yum -y install php php-cli arp-scan
+sudo yum -y install php php-cli php-json arp-scan
 
 #installing necessary packages
 sudo yum install -y git
