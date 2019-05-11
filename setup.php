@@ -75,9 +75,6 @@
 </html>
 
 <script>
-	/*document.getElementById("compute-count").addEventListener("change", function(){
-		document.getElementById("ip-block").forEach(console.log(this.nodeName));		
-	});*/
 	function PrefixDesc() {
 		let desc = "This is a piece of text that will be the same across all compute nodes.\nFor example, if you have CNode1, CNode2, and CNode3, this would be 'CNode'";
 		alert(desc);
@@ -86,4 +83,7 @@
 		let desc = "This is the CPU Type of your head node, which should be the same as the\ncompute nodes. If you don't know what this should be, then leave it as its\ndefault value.";
 		alert(desc);
 	}
+	document.getElementById("compute-count").addEventListener("change", function(){
+		alert("Hello");
+	});
 </script>

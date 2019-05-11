@@ -17,7 +17,7 @@ sudo yum -y install epel-release yum-utils
 sudo yum-config-manager --disable remi-php54
 sudo yum-config-manager --enable remi-php73
 
-sudo yum -y install php php-cli php-json arp-scan
+sudo yum -y install php php-cli php-json arp-scan nmap
 
 #installing necessary packages
 sudo yum install -y git
@@ -38,3 +38,4 @@ fi
 
 sudo arp-scan --interface=enp0s3 10.0.2.0/24 | tail -n +3 | head -n -3 | awk '{print $1}' | sed "/`hostname -I`/ d" >> arp-results.txt
 
+sudo nmap -sP -n 10.0.2.* | grep MAC | cut -d" " -f3 >> map-results.txt

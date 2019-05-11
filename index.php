@@ -8,7 +8,7 @@
 			$message = "Please fill both password fields.";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 		}
-		if ($pw1 != $pw2) {
+		elseif ($pw1 != $pw2) {
 			$message = "Passwords do not match, please try again.";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 		}
