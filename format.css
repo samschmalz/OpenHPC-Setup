@@ -9,3 +9,10 @@ body {
 	vertical-align: middle;
 	text-align: center;
 }
+
+#warning {
+	width: 40%;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}

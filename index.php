@@ -26,10 +26,11 @@
 		<link rel="stylesheet" type="text/css" href="format.css">
 	</head>
 	<body>
-		For security reasons, you should change the root password on your Raspberry Pi, as the default is well-known and insecure.<br>
-		If you've already changed the password, great!  Just enter the same password here and it will "change" it to the same thing.<br>
-		Otherwise, please enter your new password here.
-
+		<p id="warning">
+			For security reasons, you should change the root password on your Raspberry Pi, as the default is well-known and insecure.
+			If you've already changed the password, great!  Just enter the same password here and it will "change" it to the same thing.
+			Otherwise, please enter your new password here.
+		</p>
 		<form method="post" action="#">
 			<label for="password1">Password:</label><br>
 			<input type="password" name="password1" required><br>
