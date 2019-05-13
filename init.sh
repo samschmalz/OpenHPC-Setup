@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #check if running CentOS
 if [[ $(head -n 1 /etc/os-release) != *"CentOS Linux"* ]]
@@ -39,3 +39,6 @@ fi
 sudo arp-scan --interface=enp0s3 10.0.2.0/24 | tail -n +3 | head -n -3 | awk '{print $1}' | sed "/`hostname -I`/ d" >> arp-results.txt
 
 sudo nmap -sP -n 10.0.2.* | grep MAC | cut -d" " -f3 >> map-results.txt
+
+cd OpenHPC-Setup
+php -S localhost:8000

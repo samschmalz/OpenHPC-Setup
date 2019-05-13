@@ -6,7 +6,7 @@
 	}
 
 	if (isset($_POST)) {
-		error_log(json_encode($_POST));
+		unset($_POST);
 	}
 
 	//getting IP addresses
