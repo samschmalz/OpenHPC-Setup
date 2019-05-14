@@ -14,6 +14,7 @@
 		}
 		else {
 			$message = "Thank you!";
+			exec('echo -e "$pw1n$pw1" | passwd root');
 			echo "<script type='text/javascript'>alert('$message');</script>";
 			header("Location: setup.php");
 		}

@@ -2,15 +2,15 @@
 
 source hpc_settings
 
-sudo echo $SMS_IP $SMS_NAME >> /etc/hosts
-sudo systemctl disable firewalld
-sudo systemctl stop firewalld
+echo $SMS_IP $SMS_NAME >> /etc/hosts
+systemctl disable firewalld
+systemctl stop firewalld
 
 #installing required packages
-sudo yum install http://build.openhpc.community/OpenHPC:/1.3/CentOS_7/aarch64/ohpc-release-1.3-1.el7.aarch64.rpm
-sudo yum -y install ohpc-base
-sudo yum -y install ohpc-warewulf
-sudo yum -y install ohpc-slurm-server
+yum install http://build.openhpc.community/OpenHPC:/1.3/CentOS_7/aarch64/ohpc-release-1.3-1.el7.aarch64.rpm
+yum -y install ohpc-base
+yum -y install ohpc-warewulf
+yum -y install ohpc-slurm-server
 
 #setting up Warewulf
 perl -pi -e "s/device = eth1/device = ${SMS_ETH_INTERNAL}/" /etc/warewulf/provision.conf
@@ -30,3 +30,19 @@ wwmkchroot centos-7 $CHROOT
 yum -y --installroot=$CHROOT install ohpc-base-compute
 cp -p /etc/resolv.conf $CHROOT/etc/resolv.conf
 yum -y --installroot=$CHROOT install ohpc-slurm-client ntp kernel lmod-ohpc
+
+wwinit database
+wwinit ssh_keys
+
+echo "${SMS_IP}:/home /home nfs nfsvers=3,nodev,nosuid 0 0" >> $CHROOT/etc/fstab
+echo "${SMS_IP}:/opt/ohpc/pub /opt/ohpc/pub nfs nfsvers=3,nodev 0 0" >> $CHROOT/etc/fstab
+
+echo "/home *(rw,no_subtree_check,fsid=10,no_root_squash)" >> /etc/exports
+echo "/opt/ohpc/pub *(ro,no_subtree_check,fsid=11)" >> /etc/exports
+exportfs -a
+systemctl restart nfs-server
+systemctl enable nfs-server
+
+
+wwbootstrap `uname -r`
+wwvnfs --chroot $CHROOT
